@@ -1,0 +1,6 @@
+# Python 3.10-3.13. CrewAI currently excludes Python 3.14.
+crewai==1.15.22
+# Latest stable OpenAI SDK allowed by CrewAI's openai>=2.30.0,<3 constraint.
+openai==2.54.0
+streamlit==1.64.0
+pypdf==6.19.0
