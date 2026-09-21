@@ -82,7 +82,7 @@ def run_recruitment_crew(job_description: str, resumes: list[str]) -> dict:
     ]
     ids = [record["id"] for record in records]
     llm = LLM(
-        model="groq/llama-3.3-70b-versatile",
+        model="groq/openai/gpt-oss-120b",
         api_key=os.environ["GROQ_API_KEY"],
         temperature=0,
         timeout=120,
