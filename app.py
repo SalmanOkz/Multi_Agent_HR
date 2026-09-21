@@ -7,12 +7,13 @@ import streamlit as st
 from streamlit.errors import StreamlitSecretNotFoundError
 
 # Read the key before importing/creating the crew; missing secrets stay in the UI.
+# app.py — only this block changes
 try:
-    os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
-    if not os.environ["GROQ_API_KEY"].strip():
+    os.environ["GEMINI_API_KEY"] = st.secrets["GEMINI_API_KEY"]
+    if not os.environ["GEMINI_API_KEY"].strip():
         raise ValueError("Empty API key")
 except (KeyError, StreamlitSecretNotFoundError, ValueError, TypeError):
-    st.error('Add a non-empty GROQ_API_KEY to Streamlit secrets, then restart.')
+    st.error('Add a non-empty GEMINI_API_KEY to Streamlit secrets, then restart.')
     st.stop()
 
 from pypdf import PdfReader
