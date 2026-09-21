@@ -73,8 +73,8 @@ def run_recruitment_crew(job_description: str, resumes: list[str]) -> dict:
         raise ValueError("Provide at least one resume.")
     if any(not isinstance(r, str) or not r.strip() for r in resumes):
         raise ValueError("Every resume must contain readable text.")
-    if not os.environ.get("GROQ_API_KEY", "").strip():
-        raise ValueError("Set GROQ_API_KEY before running recruitment.")
+    if not os.environ.get("GEMINI_API_KEY", "").strip():
+        raise ValueError("Set GEMINI_API_KEY before running recruitment.")
 
     records = [
         {"id": f"candidate_{i}", "resume": resume.strip()}
@@ -82,8 +82,8 @@ def run_recruitment_crew(job_description: str, resumes: list[str]) -> dict:
     ]
     ids = [record["id"] for record in records]
     llm = LLM(
-        model="groq/openai/gpt-oss-120b",
-        api_key=os.environ["GROQ_API_KEY"],
+        model="gemini/gemini-3.1-flash-lite",
+        api_key=os.environ["GEMINI_API_KEY"],
         temperature=0,
         timeout=120,
     )
