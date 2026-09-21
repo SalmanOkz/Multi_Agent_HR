@@ -5,3 +5,4 @@ openai==2.54.0
 streamlit==1.64.0
 pypdf==6.19.0
 litellm
+google-genai
