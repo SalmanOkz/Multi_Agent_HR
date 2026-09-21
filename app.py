@@ -70,11 +70,12 @@ if st.button("Run", type="primary"):
     try:
         with st.spinner("Sourcing, screening, preparing questions and ranking..."):
             result = run_recruitment_crew(jd, resumes)
-    except Exception:
+    except Exception as exc:
         st.error(
             "Recruitment could not finish. Check your API key, model access, quota "
             "and connection, or retry if the model returned an invalid result."
         )
+        st.caption(f"Debug: {type(exc).__name__}: {exc}")  # remove once stable
         st.stop()
 
     candidates = result["shortlist"]
